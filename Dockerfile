@@ -26,6 +26,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY pnpm-lock.yaml ./
 
+RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
 
 COPY --from=builder /usr/src/app/dist ./dist
