@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "dockerfileLines": [
-    "FROM node/18.1.0",
+    "FROM node:18-alpine",
     "RUN npm run build",
     "COPY ./build /app",
     "RUN chmod -R 777 /app"
