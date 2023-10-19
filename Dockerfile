@@ -4,9 +4,7 @@ FROM node as builder
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package*.json ./
-COPY pnpm-lock.yaml ./
-COPY tsconfig.json ./
+COPY . ./
 
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
