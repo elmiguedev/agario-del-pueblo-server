@@ -5,9 +5,10 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package*.json ./
+COPY pnpm-lock.yaml ./
 
 RUN npm install -g pnpm
-RUN pnpm i
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
@@ -23,8 +24,9 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package*.json ./
+COPY pnpm-lock.yaml ./
 
-RUN npm ci --production
+RUN pnpm install --frozen-lockfile
 
 COPY --from=builder /usr/src/app/dist ./dist
 
