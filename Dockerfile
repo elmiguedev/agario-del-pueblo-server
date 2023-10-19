@@ -26,8 +26,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY pnpm-lock.yaml ./
 
-RUN chown -R $USER /usr/local/lib/node_modules
-
 RUN npm install 
 
 COPY --from=builder /usr/src/app/dist ./dist
