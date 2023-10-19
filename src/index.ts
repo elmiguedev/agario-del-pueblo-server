@@ -173,6 +173,6 @@ io.on("connection", (socket) => {
 })
 
 server.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`)
+  console.log(`Listening on port ${process.env.PORT} Yea`)
   initGameLoop();
 })
