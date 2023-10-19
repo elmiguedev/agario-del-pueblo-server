@@ -4,7 +4,7 @@
     "FROM node:18-alpine",
     "RUN apk update && apk upgrade && apk add --no-cache git",
     "COPY ./package.json /app",
-    "RUN npm install --production && npm cache clean --force",
+    "RUN npm ci",
     "COPY ./ /app",
     "ENV NODE_ENV production",
     "ENV PORT 80",
