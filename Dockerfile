@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package*.json ./
 COPY pnpm-lock.yaml ./
+COPY tsconfig.json ./
 
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
