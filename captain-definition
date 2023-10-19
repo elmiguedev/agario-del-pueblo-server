@@ -1,15 +1,4 @@
 {
   "schemaVersion": 2,
-  "dockerfileLines": [
-    "FROM node:18-alpine",
-    "RUN apk update && apk upgrade && apk add --no-cache git",
-    "COPY ./package.json /app",
-    "CMD [ \"npm\", \"install\" ]",
-    "COPY ./ /app",
-    "ENV NODE_ENV production",
-    "ENV PORT 80",
-    "EXPOSE 80",
-    "CMD [ \"npm\", \"run\", \"build\" ]",
-    "CMD [ \"npm\", \"run\", \"start\" ]"
-  ]
+  "dockerfilePath": "./Dockerfile"
 }
