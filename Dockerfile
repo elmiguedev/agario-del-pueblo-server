@@ -26,6 +26,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY pnpm-lock.yaml ./
 
+RUN sudo chown -R $USER /usr/local/lib/node_modules
+
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
 
