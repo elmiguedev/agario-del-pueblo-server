@@ -1,12 +1,5 @@
-FROM node as builder
+FROM node:18-alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+COPY ./dist /app
 
-# Install app dependencies
-COPY . ./
-
-RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile
-RUN pnpm build
-RUN pnpm start
+RUN node ./app/index.js
