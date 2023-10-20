@@ -1,9 +1,16 @@
 FROM node:18-alpine
 
-COPY ./dist /app
-COPY ./package.json /app
-COPY pnpm-lock.yaml /app
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+COPY . .
+
 RUN npm install -g pnpm
-RUN cd /app && pnpm install
-RUN ls
-# RUN node ./app/index.js
+RUN pnpm install
+RUN pnpm run build
+
+ENV PORT=4000
+EXPOSE 4000
+
+CMD ["npm", "run", "start"]
