@@ -39,7 +39,6 @@ const createInitialDots = () => {
 const eatDot = (player: Player, dot: Dot) => {
   world.dots = world.dots.filter(d => d.id !== dot.id);
   player.radius += 2;
-  console.log("COME", player, dot)
   io.emit("player:eat:dot", {
     player,
     dot
@@ -77,7 +76,6 @@ const checkCollisions = () => {
 
       // si la distancia es menor, come el punto
       if (distance < player.radius) {
-        console.log("LA DISTANCIA ES CHICA")
         eatDot(player, dot);
       }
 
@@ -161,7 +159,6 @@ io.on("connection", (socket) => {
       id: socket.id
     });
     delete world.players[socket.id]
-    console.log("players", world.players);
   })
 
   // 3. movimiento del mouse deu n socket
