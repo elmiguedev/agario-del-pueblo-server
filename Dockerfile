@@ -6,4 +6,4 @@ COPY pnpm-lock.yaml /app
 RUN npm install -g pnpm
 RUN cd /app && pnpm install
 RUN ls
-RUN node ./app/index.js
+# RUN node ./app/index.js
