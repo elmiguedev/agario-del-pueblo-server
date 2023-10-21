@@ -155,10 +155,10 @@ io.on("connection", (socket) => {
 
   // 2. desconexion de un socket (remove player)
   socket.on("disconnect", () => {
+    delete world.players[socket.id]
     io.emit("player:disconnect", {
       id: socket.id
     });
-    delete world.players[socket.id]
   })
 
   // 3. movimiento del mouse deu n socket
@@ -170,6 +170,6 @@ io.on("connection", (socket) => {
 })
 
 server.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT} Yea`)
+  console.log(`Listening on port ${process.env.PORT} Yeahh!`)
   initGameLoop();
 })
