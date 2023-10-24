@@ -134,7 +134,7 @@ const initGameLoop = () => {
 
 io.on("connection", (socket) => {
   const playerName = `${socket.handshake.query["playerName"]}`;
-  // 1. conexion de un nuevo socket (add player)
+  // 1. conexion de un nuevo socket (add player) s
   const player: Player = {
     id: socket.id,
     name: playerName,
@@ -165,8 +165,10 @@ io.on("connection", (socket) => {
   // 3. movimiento del mouse deu n socket
   socket.on("player:move", (data) => {
     const player = world.players[socket.id];
-    player.angle = data.angle;
-    player.speed = getSpeed(data.distance);
+    if (player) {
+      player.angle = data.angle;
+      player.speed = getSpeed(data.distance);
+    }
   })
 })
 
