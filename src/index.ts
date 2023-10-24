@@ -133,10 +133,11 @@ const initGameLoop = () => {
 }
 
 io.on("connection", (socket) => {
-
+  const playerName = `${socket.handshake.query["playerName"]}`;
   // 1. conexion de un nuevo socket (add player)
   const player: Player = {
     id: socket.id,
+    name: playerName,
     x: Math.random() * 1000,
     y: Math.random() * 1000,
     color: MathUtils.getRandomColor(),
@@ -170,6 +171,6 @@ io.on("connection", (socket) => {
 })
 
 server.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT} Yeahh :D !`)
+  console.log(`Listening on port ${process.env.PORT} Yeahh :D !!`)
   initGameLoop();
 })
