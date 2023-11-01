@@ -66,7 +66,12 @@ export class SocketServer {
             if (id === enemyId) return;
             const enemy = room.players[enemyId];
             if (enemy) {
-              this.actionProvider.eatEnemyAction.execute(player, enemy);
+              if (this.actionProvider.eatEnemyAction.execute(player, enemy)) {
+                this.io.emit("player:eat:enemy", ({
+                  player,
+                  enemy
+                }))
+              }
             }
           })
         }
